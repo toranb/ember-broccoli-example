@@ -34,9 +34,7 @@ module.exports = function (broccoli) {
   var merged = concat(allJS, {
     inputFiles: [
       'deps.min.js',
-      'compiled/application.js',
-      'compiled/other.js',
-      'compiled/people.js'
+      'compiled/*.js'
     ],
     outputFile: '/fin.min.js'
   });
