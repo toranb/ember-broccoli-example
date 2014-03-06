@@ -30,5 +30,16 @@ module.exports = function (broccoli) {
     outputFile: '/deps.min.js'
   });
 
-  return [appJs, appTemplates];
+  var allJS = new broccoli.MergedTree([appJs, appTemplates]);
+  var merged = concat(allJS, {
+    inputFiles: [
+      'deps.min.js',
+      'compiled/application.js',
+      'compiled/other.js',
+      'compiled/people.js'
+    ],
+    outputFile: '/fin.min.js'
+  });
+
+  return [merged];
 }
