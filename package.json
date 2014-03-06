@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "broccoli": "*",
+    "broccoli-cli": "*",
     "broccoli-env": "*",
     "broccoli-concat": "*",
     "broccoli-uglify-js": "*",
