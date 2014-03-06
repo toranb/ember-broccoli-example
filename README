@@ -1,4 +1,4 @@
-A simple ember.js app using grunt for the client side build step
+A simple ember.js app using grunt and broccoli
 
 
 To run the ember.js locally
@@ -9,27 +9,3 @@ To run the ember.js locally
     ./bin/server
 
     visit http://localhost:3000 to see the running app
-
-
-To run the javascript tests
-
-    npm install
-    export PATH="./node_modules/.bin:$PATH"
-    grunt test
-
-
-To run a single qunit javascript test
-
-    npm install
-    export PATH="./node_modules/.bin:$PATH"
-    open a test file and modify the name of the func from test to otest
-    grunt test
-
-
-To deploy the ember.js application to a production server
-
-    npm install
-    export PATH="./node_modules/.bin:$PATH"
-    grunt deploy
-
-    visit your production endpoint -the js file will be renamed on the fly
