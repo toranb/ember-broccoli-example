@@ -7,7 +7,10 @@
     "broccoli-uglify-js": "*",
     "broccoli-template": "*",
     "broccoli-coffee": "*",
+    "broccoli-static-compiler": "*",
     "grunt-cli": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-shell": "*",
     "bower": "*"
   },
   "scripts": {
