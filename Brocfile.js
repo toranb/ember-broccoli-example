@@ -4,16 +4,14 @@ module.exports = function (broccoli) {
   var pickFiles = require('broccoli-static-compiler')
 
   function preprocess (tree) {
-    tree = templateCompiler(tree, {
-      extensions: ['hbs', 'handlebars']
-    })
+    tree = templateCompiler(tree);
     return tree
   }
 
   var sourceTree = broccoli.makeTree('js');
   var templates = pickFiles(sourceTree, {
     srcDir: '/templates/',
-    destDir: '/compiled'
+    destDir: '/templates'
   })
   var appTemplates = preprocess(templates);
 
@@ -33,7 +31,7 @@ module.exports = function (broccoli) {
   var merged = concat(allJS, {
     inputFiles: [
       'deps.min.js',
-      'compiled/*.js'
+      'templates/*.js'
     ],
     outputFile: '/fin.min.js'
   });
