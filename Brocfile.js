@@ -48,5 +48,13 @@ module.exports = function (broccoli) {
     outputFile: '/deps.min.js'
   });
 
-  return [merged];
+  var styleTree = broccoli.makeTree('css');
+  var allCSS = concat(styleTree, {
+    inputFiles: [
+      '*.css'
+    ],
+    outputFile: '/dist/everything.min.css'
+  });
+
+  return [allCSS, merged];
 }
