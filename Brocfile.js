@@ -1,12 +1,11 @@
 module.exports = function (broccoli) {
   var concat = require('broccoli-concat')
-  var filterTemplates = require('broccoli-template')
+  var templateCompiler = require('broccoli-template-compiler')
   var pickFiles = require('broccoli-static-compiler')
 
   function preprocess (tree) {
-    tree = filterTemplates(tree, {
-      extensions: ['handlebars'],
-      compileFunction: 'Ember.Handlebars.compile'
+    tree = templateCompiler(tree, {
+      extensions: ['hbs', 'handlebars']
     })
     return tree
   }
