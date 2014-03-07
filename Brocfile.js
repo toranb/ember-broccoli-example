@@ -16,24 +16,24 @@ module.exports = function (broccoli) {
     return tree;
   }
 
-  var sourceTree = broccoli.makeTree('js');
+  var sourceTree = broccoli.makeTree('assets');
   var app = pickFiles(sourceTree, {
-    srcDir: '/',
+    srcDir: 'js',
     destDir: '/app'
   });
   var appJs = preprocess(app);
 
   var templates = pickFiles(sourceTree, {
-    srcDir: '/templates',
+    srcDir: 'js/templates',
     destDir: '/templates'
   })
   var appTemplates = precompile(templates);
 
   var vendorJs = concat(sourceTree, {
     inputFiles: [
-      'vendor/jquery/jquery.js',
-      'vendor/handlebars/handlebars.min.js',
-      'vendor/ember/ember.js'
+      'js/vendor/jquery/jquery.js',
+      'js/vendor/handlebars/handlebars.min.js',
+      'js/vendor/ember/ember.js'
     ],
     outputFile: '/vendor.min.js'
   });
@@ -45,15 +45,15 @@ module.exports = function (broccoli) {
       'app/*.js',
       'templates/*.js'
     ],
-    outputFile: '/deps.min.js'
+    outputFile: '/js/deps.min.js'
   });
 
-  var styleTree = broccoli.makeTree('css');
+  var styleTree = broccoli.makeTree('assets');
   var allCSS = concat(styleTree, {
     inputFiles: [
-      '*.css'
+      'css/*.css'
     ],
-    outputFile: '/dist/everything.min.css'
+    outputFile: '/css/everything.min.css'
   });
 
   return [allCSS, merged];

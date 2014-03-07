@@ -1,16 +1,22 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.initConfig({
     shell: {
         broccoli: {
-            command: "broccoli build js/dist"
+            command: "broccoli build assets/dist"
         }
+    },
+    clean: {
+      build: {
+        src: [ 'assets/dist' ]
+      },
     },
     watch: {
       scripts: {
-        files: ['js/*.js', 'js/templates/*.handlebars'],
+        files: ['assets/css/*.css', 'assets/js/*.coffee', 'assets/js/templates/*.handlebars'],
         tasks: ['dev'],
         options: {
           interrupt: true,
@@ -20,6 +26,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('dev', ['shell']);
+  grunt.task.registerTask('dev', ['clean', 'shell']);
   grunt.task.registerTask('local', ['dev', 'watch']);
 }
