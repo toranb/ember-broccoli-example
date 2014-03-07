@@ -10,7 +10,7 @@ module.exports = function (broccoli) {
 
   var sourceTree = broccoli.makeTree('js');
   var templates = pickFiles(sourceTree, {
-    srcDir: '/templates/',
+    srcDir: '/templates',
     destDir: '/templates'
   })
   var appTemplates = preprocess(templates);
