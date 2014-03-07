@@ -5,7 +5,7 @@
     "broccoli-env": "*",
     "broccoli-concat": "*",
     "broccoli-uglify-js": "*",
-    "broccoli-template": "*",
+    "broccoli-template-compiler": "*",
     "broccoli-coffee": "*",
     "broccoli-static-compiler": "*",
     "grunt-cli": "*",
