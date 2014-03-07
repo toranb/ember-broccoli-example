@@ -10,7 +10,6 @@
     "broccoli-static-compiler": "*",
     "grunt-cli": "*",
     "grunt-contrib-watch": "*",
-    "grunt-contrib-clean": "*",
     "grunt-shell": "*",
     "bower": "*"
   },
