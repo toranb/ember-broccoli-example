@@ -4,13 +4,13 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     watch: {
-      scripts: {
-        files: ['js/*.js', 'js/templates/*.handlebars'],
-        tasks: ['dev'],
-        options: {
-          interrupt: true,
-          debounceDelay: 250
-        }
+      options: {
+          spawn: false,
+          livereload: true
+      },
+      sources: {
+          files: ['js/*.coffee', 'js/templates/*.handlebars', 'css/*.css'],
+          tasks: ['dev']
       }
     }
   });
