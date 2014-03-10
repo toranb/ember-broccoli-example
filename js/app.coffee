@@ -30,6 +30,7 @@ App.Person = Ember.Object.extend(
     firstName + " " + lastName
   ).property("firstName", "lastName")
 )
+
 App.Person.reopenClass
   people: []
   add: (hash) ->

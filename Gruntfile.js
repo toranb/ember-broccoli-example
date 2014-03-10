@@ -1,13 +1,8 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-broccoli');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
-    shell: {
-        broccoli: {
-            command: "broccoli build js/dist"
-        }
-    },
     watch: {
       scripts: {
         files: ['js/*.js', 'js/templates/*.handlebars'],
@@ -20,6 +15,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('dev', ['shell']);
+  grunt.task.registerTask('dev', ['broccoli:build:js/dist']);
   grunt.task.registerTask('local', ['dev', 'watch']);
 }
