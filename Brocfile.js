@@ -1,7 +1,8 @@
 module.exports = function (broccoli) {
   var concat = require('broccoli-concat');
-  var templateCompiler = require('broccoli-template-compiler');
+  var templateCompiler = require('broccoli-ember-hbs-template-compiler');
   var pickFiles = require('broccoli-static-compiler');
+  var mergeTrees = require('broccoli-merge-trees');
   var filterCoffeeScript = require('broccoli-coffee');
 
   function precompile (tree) {
@@ -16,7 +17,7 @@ module.exports = function (broccoli) {
     return tree;
   }
 
-  var sourceTree = broccoli.makeTree('js');
+  var sourceTree = 'js';
   var app = pickFiles(sourceTree, {
     srcDir: '/',
     destDir: '/app'
@@ -38,7 +39,7 @@ module.exports = function (broccoli) {
     outputFile: '/vendor.min.js'
   });
 
-  var allJS = new broccoli.MergedTree([vendorJs, appJs, appTemplates]);
+  var allJS = new mergeTrees([vendorJs, appJs, appTemplates], { overwrite: true });
   var merged = concat(allJS, {
     inputFiles: [
       'vendor.min.js',
@@ -48,7 +49,7 @@ module.exports = function (broccoli) {
     outputFile: '/deps.min.js'
   });
 
-  var styleTree = broccoli.makeTree('css');
+  var styleTree = 'css';
   var allCSS = concat(styleTree, {
     inputFiles: [
       '*.css'
@@ -56,5 +57,5 @@ module.exports = function (broccoli) {
     outputFile: '/dist/everything.min.css'
   });
 
-  return [allCSS, merged];
+  return mergeTrees([allCSS, merged]);
 }
